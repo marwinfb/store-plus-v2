@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
+    <title>Store+ | Samsung Philippines</title>
+    <style>
+      /* Global Styles */
+      @font-face {
+        font-family: 'SamsungOne';
+        font-weight: 400;
+        font-style: normal;
+        src: url('./assets/fonts/SamsungOne-400.woff2') format('woff2');
+      }
+
+      @font-face {
+        font-family: 'SamsungSharpSansBold';
+        font-weight: 800;
+        font-style: normal;
+        src: url('./assets/fonts/SamsungSharpSansBold.woff2') format('woff2');
+      }
+
+      /* Reset */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+
+      * {
+        margin: 0;
+      }
+
+      body {
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        font-family: var(--font-secondary), sans-serif;
+        padding-inline: 2rem;
+      }
+
+      img, picture, video, canvas, svg {
+        display: block;
+        max-width: 100%;
+      }
+
+      input, button, textarea, select {
+        font: inherit;
+      }
+
+      p, h1, h2, h3, h4, h5, h6 {
+        overflow-wrap: break-word;
+      }
+
+      p {
+        text-wrap: pretty;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+        text-wrap: balance;
+      }
+
+
+      :root {
+        --font-primary: "SamsungOne";
+        --font-secondary: "SamsungSharpSansBold";
+
+        --color-pale-orange: #f8c492;
+        --color-pale-green: #a4d699;
+        --color-pale-teal: #a5d2d7;
+        --color-pale-blue: #c5dff8;
+        --color-pale-purple: #b9b4ea;
+        --color-pale-pink: #e7bdd5;
+        --color-pale-yellow: #ebe08e;
+        --color-dark: #000;
+        --color-gray: #f4f4f4;
+        --color-white: #fff;
+      }
+
+      /* Utilities */
+      .site-page {
+        max-width: 1440px;
+        margin-inline: auto;
+        margin-block: 1rem;
+        width: 100%;
+      }
+
+      .site-page {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-areas:
+            "kv kv kv kv"
+            "tv rf mx mx"
+            "av wd mx mx"
+            "mo mw mx mx"
+            "ac ac mx mx";
+        gap: 1rem;
+        justify-content: center;
+      }
+
+      .video-player {
+        width: 100%;
+        background-color: var(--color-gray);
+        color: #000;
+        border-radius: 1rem;
+      }
+
+      .video-player video {
+        width: 100%;
+        border: none;
+        outline: none;
+      }
+
+      .video-player {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .card {
+        background-color: var(--bg-color);
+        border-radius: 1rem;
+        color: var(--color-dark);
+        padding: 2rem;
+        position: relative;
+      }
+
+      .card a::before {
+        content: "";
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+      }
+
+      .card a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .card__inner-wrapper {
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+      }
+
+      .card__image {
+        width: min(150vw, 150px);
+        height: auto;
+        object-fit: contain;
+        transition: all 0.3s ease;
+      }
+
+      .card__image--ac {
+        width: min(150vw, 300px);
+      }
+
+      .card__image--mx {
+        width: min(150vw, 500px); 
+      }
+
+      .card:hover .card__image {
+        transform: scale(1.1);
+      } 
+
+      .card__header {
+        text-align: center;
+        font-size: clamp(1rem, 2.5vw, 1.5rem); 
+        margin-top: auto;
+      }
+
+      .card--kv {
+        grid-area: kv;
+        --bg-color: var(--color-gray);
+      }
+
+      .card--tv {
+        grid-area: tv;
+        --bg-color: var(--color-pale-blue);
+      }
+
+      .card--sound-device {
+        grid-area: av;
+        --bg-color: var(--color-pale-purple);
+      }
+
+      .card--washer-dryer {
+        grid-area: wd;
+        --bg-color: var(--color-pale-orange);
+      }
+
+      .card--monitor {
+        grid-area: mo;
+        --bg-color: var(--color-pale-pink);
+      }
+
+      .card--refrigerator {
+        grid-area: rf;
+        --bg-color: var(--color-pale-yellow);
+      }
+
+      .card--microwave {
+        grid-area: mw;
+        --bg-color: var(--color-pale-teal);
+      }
+
+      .card--air-conditioner {
+        grid-area: ac;
+        --bg-color: var(--color-pale-green);
+      }
+
+      .card--mx {
+        grid-area: mx;
+        --bg-color: var(--color-gray);
+      }
+
+      /* 2XL */
+      @media (max-width: 1536px) {
+        .site-page {
+          max-width: 1536px;
+        }
+      }
+
+      /* LG */
+      @media (max-width: 1024px) {
+        .site-page {
+          max-width: 1024px;
+        }
+      }
+
+      /* MD */
+      @media (max-width: 768px) {
+        .site-page {
+          max-width: 768px;
+        }
+
+        .site-page {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          grid-template-areas:
+              "kv kv kv kv"
+              "tv rf av mx"
+              "wd mo mw mx"
+              "ac ac ac .";
+        }
+
+        .card__image {
+          max-width: 100px;
+        }
+      }
+
+      /* XL */
+      @media (max-width: 1280px) {
+        .site-page {
+          max-width: 1280px;
+        }
+      }
+
+      /* SM */
+      @media (max-width: 640px) {
+        .site-page {
+          max-width: 640px;
+        }
+
+        .site-page {
+          grid-template-columns: 1fr;
+          grid-template-areas:
+              "kv"
+              "tv"
+              "rf"
+              "av"
+              "wd"
+              "mo"
+              "mw"
+              "ac"
+              "mx";
+        }
+      }
+
+      /* XS */
+      @media (max-width: 475px) {
+        .site-page {
+          max-width: 475px;
+        }
+      }
+
+    </style>
+
+  </head>
+  <body>
+    <div class="site-page">
+
+      <header class="card--kv">
+        <div class="video-wrapper">
+          <video class="video-player" autoplay muted loop>
+            <source src="./assets/images/main-kv-video.mp4" type="video/mp4">
+            <source src="./assets/images/main-kv-video.webm" type="video/webm">
+            <source src="./assets/images/main-kv-video.ogg" type="video/ogg" >
+            <img src="./assets/images/header-banner.png" title="Your browser does not support the <video> tag">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </header>
+
+      <article class="card card--tv">
+        <a href="https://www.samsung.com/ph/multistore/sepco_o2o/finder.tvs/" target="_blank">
+          <div class="card__inner-wrapper">
+             <img src="./assets/images/product-qled-tv.png" class="card__image" width="500" height="500" alt="TVs Category">
+            <h2 class="card__header">TVs</h2>
+          </div>
+        </a>
+      </article>
+
+      <article class="card card--sound-device">
+        <a href="https://www.samsung.com/ph/multistore/sepco_o2o/finder.audio-devices/" target="_blank">
+          <div class="card__inner-wrapper">
+             <img src="./assets/images/product-sound-tower.png" class="card__image" width="500" height="500" alt="Sound Devices Category">
+            <h2 class="card__header">Sound Devices</h2>
+          </div>
+        </a>
+      </article>
+
+      <article class="card card--washer-dryer">
+        <a href="https://www.samsung.com/ph/multistore/sepco_o2o/finder.washers-and-dryers/" target="_blank">
+          <div class="card__inner-wrapper">
+             <img src="./assets/images/product-washer.png" class="card__image" width="500" height="500" alt="Washers and Dryers Category">
+            <h2 class="card__header">Washing Machines</h2>
+          </div>
+        </a>
+      </article>
+
+      <article class="card card--monitor">
+        <a href="https://www.samsung.com/ph/multistore/sepco_o2o/finder.monitors/" target="_blank">
+          <div class="card__inner-wrapper">
+             <img src="./assets/images/product-monitor.png" class="card__image" width="500" height="500" alt="Monitors Category">
+            <h2 class="card__header">Monitors</h2>
+          </div>
+        </a>
+      </article>
+
+      <article class="card card--refrigerator">
+        <a href="https://www.samsung.com/ph/multistore/sepco_o2o/finder.refrigerators/" target="_blank">
+          <div class="card__inner-wrapper">
+             <img src="./assets/images/product-refrigerator.png" class="card__image" width="500" height="500" alt="Refrigerators Category">
+            <h2 class="card__header">Refrigerators</h2>
+          </div>
+        </a>
+      </article>
+
+      <article class="card card--microwave">
+        <a href="https://www.samsung.com/ph/multistore/sepco_o2o/finder.microwave-ovens/" target="_blank">
+          <div class="card__inner-wrapper">
+             <img src="./assets/images/product-microwave.png" class="card__image" width="500" height="500" alt="Microwave Ovens Category">
+            <h2 class="card__header">Microwave Ovens</h2>
+          </div>
+        </a>
+      </article>
+
+      <article class="card card--air-conditioner">
+        <a href="https://www.samsung.com/ph/multistore/sepco_o2o/finder.air-conditioners/" target="_blank">
+          <div class="card__inner-wrapper">
+             <img src="./assets/images/product-aircon.png" class="card__image card__image--ac" width="800" height="500" alt="Air Conditioners Category">
+            <h2 class="card__header">Air Conditioners</h2>
+          </div>
+        </a>
+      </article>
+
+      <article class="card card--mx">
+        <a href="https://www.samsung.com/ph/multistore/sepco_o2o/finder.smartphones/" target="_blank">
+          <div class="card__inner-wrapper">
+             <img src="./assets/images/product-mx.png" class="card__image--mx" width="1000" height="auto" alt="Smartphones Category">
+          </div>
+        </a>
+      </article>
+
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", (event) => {
+        let clickTag = "https://www.samsung.com/ph/multistore/sepco_o2o/";
+
+        const exit = () => {
+          let mins = new Date().getMinutes();
+          window.open(clickTag);
+        }
+
+        setInterval(()=> exit() , 6000);
+      });
+
+    </script>
+  </body>
+</html>
