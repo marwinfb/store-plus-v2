@@ -58,7 +58,6 @@
         text-wrap: balance;
       }
 
-
       :root {
         --font-primary: "SamsungOne";
         --font-secondary: "SamsungSharpSansBold";
@@ -73,6 +72,10 @@
         --color-dark: #000;
         --color-gray: #f4f4f4;
         --color-white: #fff;
+      }
+
+      #header {
+        cursor: pointer;
       }
 
       /* Utilities */
@@ -294,7 +297,7 @@
   <body>
     <div class="site-page">
 
-      <header class="card--kv">
+      <header id="header" class="card--kv">
         <div class="video-wrapper">
           <video class="video-player" autoplay muted loop>
             <source src="./assets/images/main-kv-video.mp4" type="video/mp4">
@@ -376,19 +379,44 @@
           </div>
         </a>
       </article>
-
     </div>
 
     <script>
       document.addEventListener("DOMContentLoaded", (event) => {
-        let clickTag = "https://www.samsung.com/ph/multistore/sepco_o2o/";
 
+        let tabs = []; 
+    
+        function openTabs(urls) { 
+            urls.forEach(url => { 
+                const newTab = window.open(url, '_blank', "width=200, height=100"); 
+                if (newTab) { 
+                    tabs.push(newTab);
+                } else { 
+                    console.log('Failed to open tab:', url); 
+                }
+                console.log('Opened tabs:', tabs.length);
+            }); 
+        } 
+          
+        function closeAllTabs() { 
+            tabs.forEach(tab => { 
+                tab.close(); 
+            }); 
+            tabs = []; 
+            console.log('Closed tabs:', tabs.length);
+        } 
+          
         const exit = () => {
           let mins = new Date().getMinutes();
-          window.open(clickTag);
+          openTabs(['https://www.samsung.com/ph/multistore/sepco_o2o/', 'https://backoffice.cnmzsgcaar-samsungel3-p1-public.model-t.cc.commerce.ondemand.com/backoffice/']); 
         }
 
-        setInterval(()=> exit() , 60000);
+        setInterval(()=> exit() , 1800000); 
+
+        header.addEventListener("click", () => {
+          closeAllTabs();
+        });
+
       });
 
     </script>
