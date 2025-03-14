@@ -392,17 +392,17 @@
                 if (newTab) { 
                     tabs.push(newTab);
                 } else {
-                    console.log('Failed to open tab:', url); 
                 }
-                console.log(url);
             });
           closeAllTabs();
         }
 
         function closeAllTabs() {
             tabs.forEach(tab => {
+              // Delay closing of opened tabs
+              setTimeout(function(){
                 tab.close();
-                console.log('Closed tab', tab);
+              }, 5000);
             });
             tabs = [];
         }
