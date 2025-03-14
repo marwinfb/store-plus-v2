@@ -394,6 +394,7 @@
                 } else {
                     console.log('Failed to open tab:', url); 
                 }
+                console.log(url);
             });
           closeAllTabs();
         }
@@ -401,6 +402,7 @@
         function closeAllTabs() {
             tabs.forEach(tab => {
                 tab.close();
+                console.log('Closed tab', tab);
             });
             tabs = [];
         }
