@@ -303,7 +303,7 @@
             <source src="./assets/images/main-kv-video.mp4" type="video/mp4">
             <source src="./assets/images/main-kv-video.webm" type="video/webm">
             <source src="./assets/images/main-kv-video.ogg" type="video/ogg" >
-            <img src="./assets/images/header-banner.png" title="Your browser does not support the <video> tag">
+            <img src="./assets/images/header-banner.png" title="Your browser does not support the <video> tag" alt="Do more with a Smart Home">
             Your browser does not support the video tag.
           </video>
         </div>
@@ -382,36 +382,35 @@
     </div>
 
     <script>
-      document.addEventListener("DOMContentLoaded", (event) => {
+      document.addEventListener("DOMContentLoaded", () => {
 
-        let tabs = []; 
+        let tabs = [];
     
         function openTabs(urls) { 
             urls.forEach(url => { 
-                const newTab = window.open(url, '_blank', "width=200, height=100"); 
+                const newTab = window.open(url, '_blank');
                 if (newTab) { 
                     tabs.push(newTab);
-                } else { 
+                } else {
                     console.log('Failed to open tab:', url); 
                 }
-                console.log('Opened tabs:', tabs.length);
-            }); 
-        } 
-          
-        function closeAllTabs() { 
-            tabs.forEach(tab => { 
-                tab.close(); 
-            }); 
-            tabs = []; 
-            console.log('Closed tabs:', tabs.length);
-        } 
+            });
+          closeAllTabs();
+        }
+
+        function closeAllTabs() {
+            tabs.forEach(tab => {
+                tab.close();
+            });
+            tabs = [];
+        }
           
         const exit = () => {
           let mins = new Date().getMinutes();
           openTabs(['https://www.samsung.com/ph/multistore/sepco_o2o/', 'https://backoffice.cnmzsgcaar-samsungel3-p1-public.model-t.cc.commerce.ondemand.com/backoffice/']); 
         }
 
-        setInterval(()=> exit() , 60000); // 1800000 | 30 minutes
+        setInterval(()=> exit() , 10000); // 1800000 | 30 minutes
 
         header.addEventListener("click", () => {
           closeAllTabs();
