@@ -79,22 +79,22 @@
       }
 
       /* Utilities */
-      .site-page {
+      .container {
         max-width: 1440px;
         margin-inline: auto;
         margin-block: 1rem;
         width: 100%;
       }
 
-      .site-page {
+      .product-grid {
         display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-columns: repeat(2, minmax(0, 600px));
         grid-template-areas:
-            "kv kv kv kv"
-            "tv rf mx mx"
-            "av wd mx mx"
-            "mo mw mx mx"
-            "ac ac mx mx";
+            "kv kv"
+            "tv rf"
+            "av wd"
+            "mo mw"
+            "ac ac";
         gap: 1rem;
         justify-content: center;
       }
@@ -224,31 +224,22 @@
 
       /* 2XL */
       @media (max-width: 1536px) {
-        .site-page {
+        .product-grid {
           max-width: 1536px;
         }
       }
 
       /* LG */
       @media (max-width: 1024px) {
-        .site-page {
+        .product-grid {
           max-width: 1024px;
         }
       }
 
       /* MD */
       @media (max-width: 768px) {
-        .site-page {
+        .product-grid {
           max-width: 768px;
-        }
-
-        .site-page {
-          grid-template-columns: repeat(4, minmax(0, 1fr));
-          grid-template-areas:
-              "kv kv kv kv"
-              "tv rf av mx"
-              "wd mo mw mx"
-              "ac ac ac .";
         }
 
         .card__image {
@@ -258,35 +249,21 @@
 
       /* XL */
       @media (max-width: 1280px) {
-        .site-page {
+        .product-grid {
           max-width: 1280px;
         }
       }
 
       /* SM */
       @media (max-width: 640px) {
-        .site-page {
+        .product-grid {
           max-width: 640px;
-        }
-
-        .site-page {
-          grid-template-columns: 1fr;
-          grid-template-areas:
-              "kv"
-              "tv"
-              "rf"
-              "av"
-              "wd"
-              "mo"
-              "mw"
-              "ac"
-              "mx";
         }
       }
 
       /* XS */
       @media (max-width: 475px) {
-        .site-page {
+        .product-grid {
           max-width: 475px;
         }
       }
@@ -295,8 +272,8 @@
 
   </head>
   <body>
-    <div class="site-page">
 
+    <div class="container">
       <header id="header" class="card--kv">
         <div class="video-wrapper">
           <video class="video-player" autoplay muted loop>
@@ -309,78 +286,81 @@
         </div>
       </header>
 
-      <article class="card card--tv">
-        <a href="https://www.samsung.com/ph/multistore/sepco_o2o/finder.tvs/" target="_blank">
-          <div class="card__inner-wrapper">
-             <img src="./assets/images/product-qled-tv.png" class="card__image" width="500" height="500" alt="TVs Category">
-            <h2 class="card__header">TVs</h2>
-          </div>
-        </a>
-      </article>
+      <div class="product-grid">
 
-      <article class="card card--sound-device">
-        <a href="https://www.samsung.com/ph/multistore/sepco_o2o/finder.audio-devices/" target="_blank">
-          <div class="card__inner-wrapper">
-             <img src="./assets/images/product-sound-tower.png" class="card__image" width="500" height="500" alt="Sound Devices Category">
-            <h2 class="card__header">Sound Devices</h2>
-          </div>
-        </a>
-      </article>
+        <article class="card card--tv">
+          <a href="https://www.samsung.com/ph/multistore/sepco_o2o/finder.tvs/" target="_blank">
+            <div class="card__inner-wrapper">
+              <img src="./assets/images/product-qled-tv.png" class="card__image" width="500" height="500" alt="TVs Category">
+              <h2 class="card__header">TVs</h2>
+            </div>
+          </a>
+        </article>
 
-      <article class="card card--washer-dryer">
-        <a href="https://www.samsung.com/ph/multistore/sepco_o2o/finder.washers-and-dryers/" target="_blank">
-          <div class="card__inner-wrapper">
-             <img src="./assets/images/product-washer.png" class="card__image" width="500" height="500" alt="Washers and Dryers Category">
-            <h2 class="card__header">Washing Machines</h2>
-          </div>
-        </a>
-      </article>
+        <article class="card card--sound-device">
+          <a href="https://www.samsung.com/ph/multistore/sepco_o2o/finder.audio-devices/" target="_blank">
+            <div class="card__inner-wrapper">
+              <img src="./assets/images/product-sound-tower.png" class="card__image" width="500" height="500" alt="Sound Devices Category">
+              <h2 class="card__header">Sound Devices</h2>
+            </div>
+          </a>
+        </article>
 
-      <article class="card card--monitor">
-        <a href="https://www.samsung.com/ph/multistore/sepco_o2o/finder.monitors/" target="_blank">
-          <div class="card__inner-wrapper">
-             <img src="./assets/images/product-monitor.png" class="card__image" width="500" height="500" alt="Monitors Category">
-            <h2 class="card__header">Monitors</h2>
-          </div>
-        </a>
-      </article>
+        <article class="card card--washer-dryer">
+          <a href="https://www.samsung.com/ph/multistore/sepco_o2o/finder.washers-and-dryers/" target="_blank">
+            <div class="card__inner-wrapper">
+              <img src="./assets/images/product-washer.png" class="card__image" width="500" height="500" alt="Washers and Dryers Category">
+              <h2 class="card__header">Washing Machines</h2>
+            </div>
+          </a>
+        </article>
 
-      <article class="card card--refrigerator">
-        <a href="https://www.samsung.com/ph/multistore/sepco_o2o/finder.refrigerators/" target="_blank">
-          <div class="card__inner-wrapper">
-             <img src="./assets/images/product-refrigerator.png" class="card__image" width="500" height="500" alt="Refrigerators Category">
-            <h2 class="card__header">Refrigerators</h2>
-          </div>
-        </a>
-      </article>
+        <article class="card card--monitor">
+          <a href="https://www.samsung.com/ph/multistore/sepco_o2o/finder.monitors/" target="_blank">
+            <div class="card__inner-wrapper">
+              <img src="./assets/images/product-monitor.png" class="card__image" width="500" height="500" alt="Monitors Category">
+              <h2 class="card__header">Monitors</h2>
+            </div>
+          </a>
+        </article>
 
-      <article class="card card--microwave">
-        <a href="https://www.samsung.com/ph/multistore/sepco_o2o/finder.microwave-ovens/" target="_blank">
-          <div class="card__inner-wrapper">
-             <img src="./assets/images/product-microwave.png" class="card__image" width="500" height="500" alt="Microwave Ovens Category">
-            <h2 class="card__header">Microwave Ovens</h2>
-          </div>
-        </a>
-      </article>
+        <article class="card card--refrigerator">
+          <a href="https://www.samsung.com/ph/multistore/sepco_o2o/finder.refrigerators/" target="_blank">
+            <div class="card__inner-wrapper">
+              <img src="./assets/images/product-refrigerator.png" class="card__image" width="500" height="500" alt="Refrigerators Category">
+              <h2 class="card__header">Refrigerators</h2>
+            </div>
+          </a>
+        </article>
 
-      <article class="card card--air-conditioner">
-        <a href="https://www.samsung.com/ph/multistore/sepco_o2o/finder.air-conditioners/" target="_blank">
-          <div class="card__inner-wrapper">
-             <img src="./assets/images/product-aircon.png" class="card__image card__image--ac" width="800" height="500" alt="Air Conditioners Category">
-            <h2 class="card__header">Air Conditioners</h2>
-          </div>
-        </a>
-      </article>
+        <article class="card card--microwave">
+          <a href="https://www.samsung.com/ph/multistore/sepco_o2o/finder.microwave-ovens/" target="_blank">
+            <div class="card__inner-wrapper">
+              <img src="./assets/images/product-microwave.png" class="card__image" width="500" height="500" alt="Microwave Ovens Category">
+              <h2 class="card__header">Microwave Ovens</h2>
+            </div>
+          </a>
+        </article>
 
-      <article class="card card--mx">
-        <a href="https://www.samsung.com/ph/multistore/sepco_o2o/finder.smartphones/" target="_blank">
-          <div class="card__inner-wrapper">
-             <img src="./assets/images/product-mx.png" class="card__image--mx" width="1000" height="auto" alt="Smartphones Category">
-          </div>
-        </a>
-      </article>
+        <article class="card card--air-conditioner">
+          <a href="https://www.samsung.com/ph/multistore/sepco_o2o/finder.air-conditioners/" target="_blank">
+            <div class="card__inner-wrapper">
+              <img src="./assets/images/product-aircon.png" class="card__image card__image--ac" width="800" height="500" alt="Air Conditioners Category">
+              <h2 class="card__header">Air Conditioners</h2>
+            </div>
+          </a>
+        </article>
+
+    <!--      <article class="card card&#45;&#45;mx">-->
+    <!--        <a href="https://www.samsung.com/ph/multistore/sepco_o2o/finder.smartphones/" target="_blank">-->
+    <!--          <div class="card__inner-wrapper">-->
+    <!--             <img src="./assets/images/product-mx.png" class="card__image&#45;&#45;mx" width="1000" height="auto" alt="Smartphones Category">-->
+    <!--          </div>-->
+    <!--        </a>-->
+    <!--      </article>-->
+      </div>
     </div>
-
+    
     <script>
       document.addEventListener("DOMContentLoaded", () => {
 
@@ -388,10 +368,12 @@
     
         function openTabs(urls) { 
             urls.forEach(url => { 
-                const newTab = window.open(url, '_blank');
+                const newTab = window.open(url, '_blank', "width=200, height=100");
+                newTab.focus();
                 if (newTab) { 
                     tabs.push(newTab);
                 } else {
+                    alert('Please allow popups for this website');
                 }
             });
           closeAllTabs();
@@ -402,7 +384,8 @@
               // Delay closing of opened tabs
               setTimeout(function(){
                 tab.close();
-              }, 5000);
+                console.log('Tab closed');
+              }, 3000);
             });
             tabs = [];
         }
